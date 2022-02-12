@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://noto_sans_28.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="Response" type="Label"]
+margin_left = 10.0
+margin_right = 984.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = SubResource( 3 )
+text = "this is game response"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

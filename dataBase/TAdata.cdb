@@ -1,0 +1,260 @@
+{
+	"sheets": [
+		{
+			"name": "Items",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "item_name"
+				},
+				{
+					"typeStr": "1",
+					"name": "item_id",
+					"display": null
+				},
+				{
+					"typeStr": "5:KEY,WEAPON,QUESTITEM,BROAD",
+					"name": "item_type"
+				},
+				{
+					"typeStr": "1",
+					"name": "item_description",
+					"opt": true
+				},
+				{
+					"typeStr": "2",
+					"name": "pickable",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"item_name": "黑色鑰匙",
+					"item_id": "black_key",
+					"item_type": 0,
+					"item_description": "這是把黑色鑰匙",
+					"pickable": true
+				},
+				{
+					"item_name": "晶石",
+					"item_id": "gem",
+					"item_type": 2,
+					"item_description": "閃閃發亮的白色水晶...",
+					"pickable": true
+				},
+				{
+					"item_name": "告示牌",
+					"item_id": "broad",
+					"item_type": 3,
+					"item_description": "“開發者休息中，勿擾”",
+					"pickable": false
+				},
+				{
+					"item_name": "長棍",
+					"item_id": "stick",
+					"item_type": 2,
+					"pickable": true,
+					"item_description": "一根長棍"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "NPCs",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "npc_name",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "npc_id",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "npc_description",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "initial_dialog",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "chating_dialogs"
+				},
+				{
+					"typeStr": "8",
+					"name": "npc_quests",
+					"opt": true
+				}
+			],
+			"lines": [
+				{
+					"npc_name": "男人",
+					"npc_id": "man",
+					"npc_description": "這是個穿著白袍的中年男人，臉上帶著和藹的笑",
+					"initial_dialog": "您好冒險者，歡迎來到文字世界。在正式冒險之前，你需要通關這個房間，我需要保證你已經掌握了文字世界的基本規則。",
+					"chating_dialogs": [
+						{
+							"chating_dialog": "怎麼了？"
+						},
+						{
+							"chating_dialog": "外面的世界很精彩。"
+						},
+						{
+							"chating_dialog": "去了外面不要隨便闖禍，至少一開始不要。"
+						},
+						{
+							"chating_dialog": "我們目前只是Alpha版本，沒有多人模式，也沒有進度儲存功能。"
+						},
+						{
+							"chating_dialog": "今天天氣真好。"
+						},
+						{
+							"chating_dialog": "怎麼了？"
+						},
+						{
+							"chating_dialog": "今天天氣真好。"
+						},
+						{
+							"chating_dialog": "外面的世界很精彩。"
+						}
+					],
+					"npc_quests": [
+						{
+							"quest_name": "尋找晶石",
+							"post_quest_dialog": "請幫我找到晶石，我會替你打開通往人世的門。",
+							"quest_not_finished_dialog": "找到晶石了嗎?",
+							"quest_finished_dialog": "恭喜你完成了任務，我打開了通往虛空的門，快點離開這裡吧。",
+							"finished_add_chatting": "謝謝你找到晶石",
+							"is_finished": false,
+							"is_accepted": false
+						}
+					]
+				},
+				{
+					"npc_name": "開發者的靈魂",
+					"npc_id": "developer_soul",
+					"npc_description": "漂浮半空的淡藍色靈魂，正在埋頭大睡",
+					"initial_dialog": "......(呼呼大睡)",
+					"chating_dialogs": [
+						{
+							"chating_dialog": "..."
+						},
+						{
+							"chating_dialog": "......"
+						},
+						{
+							"chating_dialog": "......伺服器會架好的(嘟囔)"
+						},
+						{
+							"chating_dialog": "......UI......login......"
+						}
+					],
+					"npc_quests": [
+						{
+							"quest_name": "未知",
+							"post_quest_dialog": "......",
+							"quest_not_finished_dialog": "......",
+							"quest_finished_dialog": "什麼鬼！你真有耐心！彩蛋在那個房間裡，滿足你",
+							"finished_add_chatting": "zzzzz...",
+							"is_finished": false,
+							"is_accepted": false
+						}
+					]
+				},
+				{
+					"npc_name": "古裝男人",
+					"npc_id": "trainer",
+					"npc_description": "褐色麻布衫，綁著頭巾",
+					"initial_dialog": "您好冒險者。",
+					"chating_dialogs": [
+						{
+							"chating_dialog": "怎麼了？"
+						}
+					],
+					"npc_quests": [
+						{
+							"quest_name": "尋找長棍",
+							"post_quest_dialog": "能幫我找找我的長棍？",
+							"quest_not_finished_dialog": "找到了嗎？",
+							"quest_finished_dialog": "謝謝，這裡是一點報酬。",
+							"finished_add_chatting": "謝謝你的幫忙",
+							"is_finished": false,
+							"is_accepted": false
+						}
+					]
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "NPCs@chating_dialogs",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "chating_dialog",
+					"display": null
+				}
+			]
+		},
+		{
+			"name": "NPCs@npc_quests",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "quest_name",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "post_quest_dialog",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "quest_not_finished_dialog",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "quest_finished_dialog",
+					"display": null
+				},
+				{
+					"typeStr": "1",
+					"name": "finished_add_chatting",
+					"display": null
+				},
+				{
+					"typeStr": "2",
+					"name": "is_finished",
+					"display": null
+				},
+				{
+					"typeStr": "2",
+					"name": "is_accepted",
+					"display": 1
+				}
+			]
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}
