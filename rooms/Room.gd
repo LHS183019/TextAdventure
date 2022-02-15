@@ -21,7 +21,6 @@ func _ready() -> void:
 
 func when_enter():
 	if !when_enter.empty():
-		yield(Units.game_info,"create_finish")
 		Units.game_info.create_response(when_enter)
 	enter_story()
 		
