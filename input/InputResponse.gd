@@ -4,6 +4,6 @@ func set_text(input:String,response:String):
 	if input.empty():
 		$Rows/InputHistory.queue_free()
 	else:
-		$Rows/InputHistory.text = " > " + input
+		$Rows/InputHistory.bbcode_text = " > " + input
 	
-	$Rows/Response.text = response
+	$Rows/Response.bbcode_text = response

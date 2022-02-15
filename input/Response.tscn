@@ -1,17 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://noto_sans_28.tres" type="DynamicFont" id=1]
+[ext_resource path="res://noto_sans_28_bold.tres" type="DynamicFont" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[node name="Response" type="Label"]
+[node name="Response" type="RichTextLabel"]
 margin_left = 10.0
 margin_right = 984.0
 margin_bottom = 61.0
-custom_fonts/font = ExtResource( 1 )
+focus_mode = 2
+custom_colors/selection_color = Color( 0.480469, 0.480469, 0.480469, 1 )
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/bold_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
 custom_styles/normal = SubResource( 3 )
-text = "this is game response"
-autowrap = true
+bbcode_enabled = true
+bbcode_text = "this is game response."
+text = "this is game response."
+fit_content_height = true
+scroll_active = false
+selection_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

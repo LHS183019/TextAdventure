@@ -2,15 +2,34 @@ tool
 extends PanelContainer
 class_name MetaRoom
 
+
+const Units = preload("res://global/Units.tres")
 export(String) var room_name = "Room Name" setget set_room_name
 export(String) var room_id = "Room id" setget set_room_id 
 export(String,MULTILINE) var room_description = "Room Script" setget set_room_description
-export(String,MULTILINE) var enter_story = "When_Enter"
-###TODO: ADD ROOM TYPE, ADD ROOM EXIT DESCRIPTION
+export(String,MULTILINE) var when_enter = ""
+export(Array,String,MULTILINE) var enter_story = []
+export(Array,int) var enter_story_timer = []
+###TODO: ADD ROOM TYPE, ADD ROOM EXITS DESCRIPTION
 
 var room_exits:Dictionary = {}
 var room_items:Array = []
 var room_npcs:Array = []
+
+func _ready() -> void:
+	pass
+
+func when_enter():
+	if !when_enter.empty():
+		yield(Units.game_info,"create_finish")
+		Units.game_info.create_response(when_enter)
+	enter_story()
+		
+func enter_story():
+	if !enter_story.empty():
+		for i in range(enter_story.size()):
+			yield(get_tree().create_timer(enter_story_timer[i]),"timeout")
+			Units.game_info.create_response(enter_story[i])
 
 func set_room_id(new_id):
 	room_id = new_id

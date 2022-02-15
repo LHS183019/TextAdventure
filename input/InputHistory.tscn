@@ -1,14 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://noto_sans_24.tres" type="DynamicFont" id=1]
+[ext_resource path="res://noto_sans_24_bold.tres" type="DynamicFont" id=2]
 
-[node name="InputHistory" type="Label"]
+[node name="InputHistory" type="RichTextLabel"]
 margin_right = 984.0
 margin_bottom = 32.0
-custom_colors/font_color = Color( 0.631373, 0.631373, 0.631373, 1 )
-custom_fonts/font = ExtResource( 1 )
+focus_mode = 2
+custom_colors/default_color = Color( 0.603922, 0.603922, 0.603922, 1 )
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/bold_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "  >  this is the user input"
 text = "  >  this is the user input"
-autowrap = true
+fit_content_height = true
+scroll_active = false
+selection_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

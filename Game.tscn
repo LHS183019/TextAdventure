@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://input/Input.gd" type="Script" id=1]
-[ext_resource path="res://plex_mono_28.tres" type="DynamicFont" id=2]
+[ext_resource path="res://plex_mono_28/plex_mono_28.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://rooms/Room.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CommandProcessor.gd" type="Script" id=5]
 [ext_resource path="res://rooms/RoomManager.gd" type="Script" id=6]
 [ext_resource path="res://Player.gd" type="Script" id=7]
 [ext_resource path="res://GameInfo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://rooms/OutsideRoom.gd" type="Script" id=9]
+[ext_resource path="res://TalkBut.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
@@ -52,44 +54,156 @@ custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
-[node name="Rows" type="VBoxContainer" parent="BackGround/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BackGround/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 1004.0
 margin_bottom = 580.0
 custom_constants/separation = 15
 
-[node name="GameInfo" parent="BackGround/MarginContainer/Rows" instance=ExtResource( 8 )]
+[node name="Rows" type="VBoxContainer" parent="BackGround/MarginContainer/HBoxContainer"]
+margin_right = 655.0
+margin_bottom = 560.0
+size_flags_horizontal = 3
+custom_constants/separation = 15
+
+[node name="GameInfo" parent="BackGround/MarginContainer/HBoxContainer/Rows" instance=ExtResource( 8 )]
+margin_right = 655.0
 margin_bottom = 475.0
 
-[node name="InputArea" type="PanelContainer" parent="BackGround/MarginContainer/Rows"]
+[node name="InputArea" type="PanelContainer" parent="BackGround/MarginContainer/HBoxContainer/Rows"]
 margin_top = 490.0
-margin_right = 984.0
+margin_right = 655.0
 margin_bottom = 560.0
 rect_min_size = Vector2( 0, 70 )
 custom_styles/panel = SubResource( 3 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BackGround/MarginContainer/Rows/InputArea"]
-margin_right = 984.0
+[node name="HBoxContainer" type="HBoxContainer" parent="BackGround/MarginContainer/HBoxContainer/Rows/InputArea"]
+margin_right = 655.0
 margin_bottom = 70.0
 
-[node name="Caret" type="Label" parent="BackGround/MarginContainer/Rows/InputArea/HBoxContainer"]
+[node name="Caret" type="Label" parent="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer"]
 margin_top = 16.0
 margin_right = 51.0
 margin_bottom = 53.0
 custom_fonts/font = ExtResource( 2 )
 text = " > "
 
-[node name="Input" type="LineEdit" parent="BackGround/MarginContainer/Rows/InputArea/HBoxContainer"]
+[node name="Input" type="LineEdit" parent="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer"]
 margin_left = 55.0
-margin_right = 984.0
+margin_right = 655.0
 margin_bottom = 70.0
+focus_neighbour_top = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath("../../../../SidePanel/MarginContainer/Rows/ButtonList/TalkBut")
+focus_previous = NodePath(".")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 4 )
 max_length = 48
+placeholder_text = "text command there"
+placeholder_alpha = 0.508
 script = ExtResource( 1 )
+
+[node name="SidePanel" type="PanelContainer" parent="BackGround/MarginContainer/HBoxContainer"]
+margin_left = 670.0
+margin_right = 984.0
+margin_bottom = 560.0
+
+[node name="MarginContainer" type="MarginContainer" parent="BackGround/MarginContainer/HBoxContainer/SidePanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 307.0
+margin_bottom = 553.0
+
+[node name="Rows" type="VBoxContainer" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer"]
+margin_right = 300.0
+margin_bottom = 546.0
+rect_min_size = Vector2( 300, 0 )
+
+[node name="Top" type="HBoxContainer" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows"]
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="Tree" type="Tree" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows"]
+margin_top = 54.0
+margin_right = 300.0
+margin_bottom = 342.0
+size_flags_vertical = 3
+
+[node name="ButtonList" type="GridContainer" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows"]
+margin_top = 346.0
+margin_right = 300.0
+margin_bottom = 546.0
+rect_min_size = Vector2( 0, 200 )
+columns = 3
+
+[node name="TalkBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_right = 97.0
+margin_bottom = 64.0
+focus_neighbour_left = NodePath("../DropBut")
+focus_previous = NodePath("../../../../../Rows/InputArea/HBoxContainer/Input")
+text = "Talk"
+
+[node name="AskqBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_left = 101.0
+margin_right = 198.0
+margin_bottom = 64.0
+text = "AskQ"
+
+[node name="HelpBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_left = 202.0
+margin_right = 299.0
+margin_bottom = 64.0
+focus_neighbour_right = NodePath("../LookatBut")
+text = "Help"
+
+[node name="LookatBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_top = 68.0
+margin_right = 97.0
+margin_bottom = 132.0
+focus_neighbour_left = NodePath("../HelpBut")
+text = "Lookat"
+
+[node name="AroundBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_left = 101.0
+margin_top = 68.0
+margin_right = 198.0
+margin_bottom = 132.0
+text = "Lookaround"
+
+[node name="GiveBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_left = 202.0
+margin_top = 68.0
+margin_right = 299.0
+margin_bottom = 132.0
+focus_neighbour_right = NodePath("../TakeBut")
+text = "Give"
+
+[node name="TakeBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_top = 136.0
+margin_right = 97.0
+margin_bottom = 200.0
+focus_neighbour_left = NodePath("../GiveBut")
+text = "Take"
+
+[node name="UseBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_left = 101.0
+margin_top = 136.0
+margin_right = 198.0
+margin_bottom = 200.0
+text = "Use"
+
+[node name="DropBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
+margin_left = 202.0
+margin_top = 136.0
+margin_right = 299.0
+margin_bottom = 200.0
+focus_neighbour_right = NodePath("../TalkBut")
+focus_next = NodePath("../../../../../Rows/InputArea/HBoxContainer/Input")
+text = "Drop"
 
 [node name="RoomManager" type="Node" parent="."]
 script = ExtResource( 6 )
@@ -102,7 +216,6 @@ margin_bottom = -332.0
 room_name = "白色房間"
 room_id = "white_room"
 room_description = "這是一個白色的房間，有個男人站在你眼前。"
-enter_story = ""
 
 [node name="DeveloperRoom" parent="RoomManager" instance=ExtResource( 4 )]
 margin_left = -916.0
@@ -112,7 +225,6 @@ margin_bottom = -331.0
 room_name = "開發者小屋"
 room_id = "developer_room"
 room_description = "這是所破舊的公寓，開發者的靈魂正在電腦桌前睡覺。"
-enter_story = ""
 
 [node name="TrainingRoom" parent="RoomManager" instance=ExtResource( 4 )]
 margin_left = -292.0
@@ -122,7 +234,6 @@ margin_bottom = -325.0
 room_name = "練習間"
 room_id = "training_room"
 room_description = "這是一個白色的房間，有個木樁立在中間，一位古裝打扮的男人倚在房間的另一邊。"
-enter_story = ""
 
 [node name="Unkown" parent="RoomManager" instance=ExtResource( 4 )]
 margin_left = -1198.0
@@ -132,27 +243,32 @@ margin_bottom = -329.0
 room_name = "未知"
 room_id = "unkown"
 room_description = "一片漆黑，地上有把黑色鑰匙。"
-enter_story = ""
 
 [node name="Outside" parent="RoomManager" instance=ExtResource( 4 )]
 margin_left = -589.0
 margin_top = -783.0
 margin_right = -339.0
 margin_bottom = -583.0
+script = ExtResource( 9 )
 room_name = "白色虛空"
 room_id = "white_void"
 room_description = "你走出了白色房間，外面是一望無際的白色虛空......"
-enter_story = ""
+enter_story = [ "背後的門消失了", "一把天上傳來的聲音： “是時候讓你離開了。”", "你眼前一白，陷入了昏迷" ]
+enter_story_timer = [ 1, 3, 2 ]
 
 [node name="WoodHouse" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = 418.0
-margin_top = -812.0
-margin_right = 668.0
-margin_bottom = -612.0
+margin_left = 184.0
+margin_top = -781.0
+margin_right = 434.0
+margin_bottom = -581.0
 room_name = "簡陋木屋"
 room_id = "wood_house"
 room_description = "這是一個簡陋的木屋。"
-enter_story = ""
+when_enter = "你被傳送到簡陋木屋"
+enter_story = [ "你睜開眼，發現自己在一所木屋的床上" ]
+enter_story_timer = [ 3 ]
 
-[connection signal="text_entered" from="BackGround/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_Input_text_entered"]
-[connection signal="text_entered" from="BackGround/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_entered"]
+[connection signal="text_changed" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_changed"]
+[connection signal="text_entered" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_Input_text_entered"]
+[connection signal="text_entered" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_entered"]
+[connection signal="change_room_to" from="RoomManager" to="CommandProcessor" method="_handle_RoomManager_room_change"]

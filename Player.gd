@@ -9,11 +9,8 @@ func _ready() -> void:
 
 
 func pickup_item(item:Item):
-	if item.pickable:
-		inventory.append(item)
-		return "你撿起了%s並把它放入背包(inventory)" % item.item_name
-	else:
-		return "你撿%s幹什麼？" % item.item_name
+	inventory.append(item)
+	return "你撿起了%s並把它放入背包(inventory)" % item.item_name
 
 func add_quest(new_quest):
 	quest.append(new_quest)

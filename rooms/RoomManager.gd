@@ -2,14 +2,13 @@ extends Node
 
 const Units = preload("res://global/Units.tres")
 
+signal change_room_to(room)
 func _ready() -> void:
 	
 	Units.secret_rooms["developer_soul"] = [["WEST","EAST"],$Unkown]
 	var black_key:Item = load_item("black_key")
 	$Unkown.add_new_item(black_key)
-	
-	
-	$EmptyRoom.connect_exist_locked("NORTH",$Outside)
+	$EmptyRoom.connect_exist_locked("NORTH",$Outside,[],"outside",false)
 	$EmptyRoom.connect_exist_unlocked("WEST",$DeveloperRoom)
 	$EmptyRoom.connect_exist_unlocked("EAST",$TrainingRoom)
 	var man:NPC = load_npc("man")
@@ -41,3 +40,7 @@ func load_npc(npc_name:String)->NPC:
 	temp._ready()
 	return temp
 
+func change_room_to(room):
+	for child in get_children():
+		if child.room_id == room:
+			emit_signal("change_room_to",child)

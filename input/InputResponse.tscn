@@ -16,7 +16,7 @@ __meta__ = {
 [node name="Rows" type="VBoxContainer" parent="."]
 margin_left = 10.0
 margin_right = 974.0
-margin_bottom = 76.0
+margin_bottom = 78.0
 custom_constants/separation = -1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -24,10 +24,10 @@ __meta__ = {
 
 [node name="InputHistory" parent="Rows" instance=ExtResource( 2 )]
 margin_right = 964.0
-margin_bottom = 35.0
+margin_bottom = 36.0
 
 [node name="Response" parent="Rows" instance=ExtResource( 1 )]
 margin_left = 0.0
-margin_top = 34.0
+margin_top = 35.0
 margin_right = 964.0
-margin_bottom = 76.0
+margin_bottom = 78.0

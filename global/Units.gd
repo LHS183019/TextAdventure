@@ -4,3 +4,4 @@ class_name Unit
 var player = null
 var current_room = null
 var secret_rooms := {}  # syntax {NPC:[Direction,MetaRoom]}
+var game_info = null

@@ -16,7 +16,7 @@ var command_set_help:Dictionary = {
 	"lookaround":"查看房間描述",
 	"move":"同go",
 	"pick":"同take",
-	"quest":"查看玩家已有的任務",
+	"quest":"查看玩家已有的任務(未完成)",
 	"talk":"talk {people_name} 與房間裏的某個人談話",
 	"take":"take {item_name} 撿起房間中的某個物品",
 	"use":"use {item_name} {use_on} 把某道具使用到某對象身上",
@@ -140,8 +140,11 @@ func command_take(item=null):
 	item = item.to_lower()
 	for room_item in Units.current_room.room_items:
 		if room_item.item_id == item:
-			Units.current_room.remove_item(room_item)
-			return Units.player.pickup_item(room_item)
+			if room_item.pickable:
+				Units.current_room.remove_item(room_item)
+				return Units.player.pickup_item(room_item)
+			else:
+				return "你撿%s幹什麼？" % room_item.item_name
 	for room_npc in Units.current_room.room_npcs:
 		if room_npc.npc_id == item:
 			return "這可不是個道具"
@@ -296,6 +299,7 @@ func command_go(direction=null)->String:
 		if exit.is_another_room_locked(Units.current_room):
 			return "這個出口被鎖上了，你出不去"
 		return PoolStringArray(["你向%s走去..." % Directions.str2chinese(direction), 
+		"你進入了%s" % exit.get_another_room(Units.current_room),
 		change_room(exit.get_another_room(Units.current_room))]).join("\n")
 	elif !Units.current_room.room_exits.keys().has(direction):
 		return "沒有這個方向"
@@ -305,4 +309,9 @@ func command_go(direction=null)->String:
 func change_room(new_room:MetaRoom):
 	Units.current_room = new_room
 	var response_text = Units.current_room.get_full_description()
+	Units.current_room.when_enter()
 	return response_text
+
+
+func _handle_RoomManager_room_change(room) -> void:
+	Units.game_info.create_response(change_room(room))
