@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://input/Response.tscn" type="PackedScene" id=1]
 [ext_resource path="res://input/InputHistory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://input/InputResponse.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.0784314 )
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 
 [node name="InputResponse" type="MarginContainer"]
 margin_right = 974.0
@@ -12,6 +18,12 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Zebra" type="Panel" parent="."]
+margin_left = 10.0
+margin_right = 974.0
+margin_bottom = 78.0
+custom_styles/panel = SubResource( 1 )
 
 [node name="Rows" type="VBoxContainer" parent="."]
 margin_left = 10.0

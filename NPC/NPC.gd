@@ -34,14 +34,14 @@ func _ready():
 		printerr("%s is not exist" % npc_id)
 
 func _to_string() -> String:
-	return "%s(%s)" % [npc_name,npc_id]
+	return Bbcode.wrap_npc("%s(%s)" % [npc_name,npc_id])
 func get_dialog():
 	if first_meet :
 		first_meet = false
-		return get_initial_dialog()
+		return Bbcode.wrap_dialog(get_initial_dialog())
 	else:
 		var random = rng.randi_range(0,chating_dialogs.size()-1)
-		return get_chatting_dialog(random)
+		return Bbcode.wrap_dialog(get_chatting_dialog(random))
 
 func set_quest_process(value):
 	quest_process = value
@@ -65,12 +65,12 @@ func get_post_quest_dialog():
 	if npc_quests.empty():
 		return "他無法給你任務"
 	if all_quests_finished():
-		return "%s: \"%s\"" % [npc_name,"我已經沒什麼能給你做的了"]
+		return Bbcode.wrap_dialog("%s: \"%s\"" % [npc_name,"我已經沒什麼能給你做的了"])
 	if !npc_quests[quest_process]["is_accepted"]:
 		npc_quests[quest_process]["is_accepted"] = true
-		return "%s: \"%s\"" % [npc_name,npc_quests[quest_process]["post_quest_dialog"]]
+		return Bbcode.wrap_dialog("%s: \"%s\"" % [npc_name,npc_quests[quest_process]["post_quest_dialog"]])
 	else:
-		return "%s: \"%s\"" % [npc_name,npc_quests[quest_process]["quest_not_finished_dialog"]]
+		return Bbcode.wrap_dialog("%s: \"%s\"" % [npc_name,npc_quests[quest_process]["quest_not_finished_dialog"]])
 
 func get_quest_response():
 	if npc_quests[quest_process]["is_finished"]:

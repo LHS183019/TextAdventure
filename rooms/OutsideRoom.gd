@@ -8,4 +8,4 @@ func enter_story():
 	for i in range(enter_story.size()):
 		yield(get_tree().create_timer(enter_story_timer[i]),"timeout")
 		Units.game_info.create_response(enter_story[i])
-	get_parent().change_room_to("wood_house")
+	Event.emit_signal("change_room_to",get_parent().get_node("WoodHouse"))

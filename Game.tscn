@@ -253,8 +253,8 @@ script = ExtResource( 9 )
 room_name = "白色虛空"
 room_id = "white_void"
 room_description = "你走出了白色房間，外面是一望無際的白色虛空......"
-enter_story = [ "背後的門消失了", "一把天上傳來的聲音： “是時候讓你離開了。”", "你眼前一白，陷入了昏迷" ]
-enter_story_timer = [ 1, 3, 2 ]
+enter_story = [ "背後的門消失了", "一把天上傳來的聲音： “是時候讓你離開了。”", "你眼前一白，陷入了昏迷", "" ]
+enter_story_timer = [ 1, 3, 2, 2 ]
 
 [node name="WoodHouse" parent="RoomManager" instance=ExtResource( 4 )]
 margin_left = 184.0
@@ -264,11 +264,10 @@ margin_bottom = -581.0
 room_name = "簡陋木屋"
 room_id = "wood_house"
 room_description = "這是一個簡陋的木屋。"
-when_enter = "你被傳送到簡陋木屋"
+when_enter = "你進入了簡陋木屋"
 enter_story = [ "你睜開眼，發現自己在一所木屋的床上" ]
 enter_story_timer = [ 3 ]
 
 [connection signal="text_changed" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_changed"]
 [connection signal="text_entered" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_Input_text_entered"]
 [connection signal="text_entered" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_entered"]
-[connection signal="change_room_to" from="RoomManager" to="CommandProcessor" method="_handle_RoomManager_room_change"]

@@ -26,6 +26,9 @@ var other_help = {
 	"direction":"EAST,WEST,SOUTH,NORTH,UP,DOWN,EASTSOUTH,EASTNORTH,WESTSOUTH,WESTNORTH"
 }
 
+func _ready() -> void:
+	Event.connect("change_room_to",self, "_handle_room_change")
+
 func initialize(starting_room):
 	Units.current_room = starting_room
 	return change_room(starting_room)
@@ -298,7 +301,7 @@ func command_go(direction=null)->String:
 		var exit:Exit = Units.current_room.room_exits[direction]
 		if exit.is_another_room_locked(Units.current_room):
 			return "這個出口被鎖上了，你出不去"
-		return PoolStringArray(["你向%s走去..." % Directions.str2chinese(direction), 
+		return PoolStringArray(["你向%s走去..." % Bbcode.wrap_direction(Directions.str2chinese(direction)), 
 		"你進入了%s" % exit.get_another_room(Units.current_room),
 		change_room(exit.get_another_room(Units.current_room))]).join("\n")
 	elif !Units.current_room.room_exits.keys().has(direction):
@@ -313,5 +316,5 @@ func change_room(new_room:MetaRoom):
 	return response_text
 
 
-func _handle_RoomManager_room_change(room) -> void:
+func _handle_room_change(room) -> void:
 	Units.game_info.create_response(change_room(room))

@@ -7,7 +7,6 @@ const Units = preload("res://global/Units.tres")
 func _ready() -> void:
 	Units.player = self
 
-
 func pickup_item(item:Item):
 	inventory.append(item)
 	return "你撿起了%s並把它放入背包(inventory)" % item.item_name

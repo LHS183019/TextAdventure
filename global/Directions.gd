@@ -62,7 +62,9 @@ static func auto_complete(direction_shortcut:String)->String:
 		_:
 			return direction_shortcut
 	return direction_shortcut
-static func str2chinese(direction:String)->String:
+	
+	
+static func str_chinese_mapping(direction:String):
 	match(direction):
 		"EAST":
 			return "東面"
@@ -94,3 +96,6 @@ static func str2chinese(direction:String)->String:
 			return "森林"
 	
 	return ""
+	
+static func str2chinese(direction:String)->String:
+	return Bbcode.wrap_direction(str_chinese_mapping(direction))

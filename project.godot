@@ -59,6 +59,8 @@ config/icon="res://icon.png"
 Types="*res://global/Types.gd"
 Directions="*res://global/Directions.gd"
 DataBase="*res://dataBase/DataBase.gd"
+Event="*res://global/Event.gd"
+Bbcode="*res://global/Bbcode.gd"
 
 [physics]
 

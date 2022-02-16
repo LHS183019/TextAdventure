@@ -3,14 +3,15 @@ extends PanelContainer
 
 export(int) var max_lines_remembered := 30
 
-signal create_finish()
-
+signal create_finish
 const Units = preload("res://global/Units.tres")
 const InputRespone = preload("res://input/InputResponse.tscn")
 onready var history_rows = $ScrollContainer/HistoryRows
 onready var scroll = $ScrollContainer
 onready var scroll_bar = scroll.get_v_scrollbar()
 
+
+var should_zebra = false
 var max_scroll_value := 0
 
 func _ready() -> void:
@@ -28,12 +29,16 @@ func create_response(response_text,input_text=""):
 
 func _add_history_to_historyrows(input_text:String,response_text:String):
 	var history_row = InputRespone.instance()
+	history_row.should_zebra = should_zebra
+	should_zebra = !should_zebra
 	history_row.set_text(input_text, response_text)
 	history_rows.add_child(history_row)
 	emit_signal("create_finish")
 
 func _add_response_to_historyrows(response_text:String):
 	var response_row = InputRespone.instance()
+	response_row.should_zebra = should_zebra
+	should_zebra = !should_zebra
 	response_row.set_text("",response_text)
 	history_rows.add_child(response_row)
 	emit_signal("create_finish")

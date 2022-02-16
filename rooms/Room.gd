@@ -15,6 +15,7 @@ export(Array,int) var enter_story_timer = []
 var room_exits:Dictionary = {}
 var room_items:Array = []
 var room_npcs:Array = []
+var first_enter = true
 
 func _ready() -> void:
 	pass
@@ -22,7 +23,9 @@ func _ready() -> void:
 func when_enter():
 	if !when_enter.empty():
 		Units.game_info.create_response(when_enter)
-	enter_story()
+	if first_enter:
+		first_enter = false
+		enter_story()
 		
 func enter_story():
 	if !enter_story.empty():
@@ -39,7 +42,7 @@ func set_room_name(new_name:String):
 	$MarginContainer/Rows/TopicsRows/RoomName.text = new_name
 
 func _to_string() -> String:
-	return "%s(%s)" % [room_name,room_id]
+	return Bbcode.wrap_direction("%s(%s)" % [room_name,room_id])
 
 func set_room_description(new_description:String):
 	room_description = new_description
@@ -111,6 +114,9 @@ func get_room_npcs_description():
 	return "人物有: %s" % npcs
 	
 func get_room_exits_description():
-	var exits = PoolStringArray(room_exits.keys()).join(",")
+	var exits = []
+	for key in room_exits.keys():
+		exits.append(Bbcode.wrap_direction(key))
+	exits = PoolStringArray(exits).join(",")
 	return "出口: %s" % exits
 
