@@ -2,13 +2,15 @@ extends Node
 
 const Units = preload("res://global/Units.tres")
 
-func _ready() -> void:
+onready var mini_map = $BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/Map/MapView/MiniMap
+
+func initialize() -> void:
 	
 	Units.secret_rooms["developer_soul"] = [["WEST","EAST"],$Unkown]
 	var black_key:Item = load_item("black_key")
 	$Unkown.add_new_item(black_key)
 	$EmptyRoom.connect_exist_locked("NORTH",$Outside,[],"outside",false)
-	$EmptyRoom.connect_exist_unlocked("WEST",$DeveloperRoom)
+	$EmptyRoom.connect_exist_unlocked("UP",$DeveloperRoom)
 	$EmptyRoom.connect_exist_unlocked("EAST",$TrainingRoom)
 	var man:NPC = load_npc("man")
 	man.quest_item.append(load_item("gem"))

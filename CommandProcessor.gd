@@ -313,6 +313,7 @@ func change_room(new_room:MetaRoom):
 	Units.current_room = new_room
 	var response_text = Units.current_room.get_full_description()
 	Units.current_room.when_enter()
+	Event.emit_signal("room_changed")
 	return response_text
 
 

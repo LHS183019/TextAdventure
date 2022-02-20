@@ -71,10 +71,20 @@ func _connect_exists(direction:String,another_room,locked_1=false,locked_2=false
 		self.room_exits[name_overide[0]] = exit
 		if two_side:
 			another_room.room_exits[name_overide[1]] = exit
+		
+		if Directions.MINIMAP_DIRECTIONS.has(name_overide[0]):
+			Event.emit_signal("generate_room", name_overide[0], self, another_room, two_side)
+			return exit
+			
+		for dir in Directions.MINIMAP_DIRECTIONS:
+			if !room_exits.keys().has(dir):
+				Event.emit_signal("generate_room", dir, self, another_room, two_side)
+				
 	else:
 		self.room_exits[direction] = exit
 		if two_side:
 			another_room.room_exits[Directions.reverse(direction)] = exit
+		Event.emit_signal("generate_room", direction, self, another_room, two_side)
 	return exit
 
 func add_new_item(new_item:Item):

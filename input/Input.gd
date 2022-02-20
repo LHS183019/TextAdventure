@@ -24,6 +24,7 @@ func _gui_input(event: InputEvent) -> void:
 			if current_index-1 >= 0:
 				current_index -= 1
 				text = input_history[current_index]
+				
 
 func _on_Input_text_entered(new_text: String) -> void:
 	if !new_text.empty():
