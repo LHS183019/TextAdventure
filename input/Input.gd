@@ -5,7 +5,7 @@ extends LineEdit
 # var a: int = 2
 # var b: String = "text"
 
-var input_history = []
+var input_history = [""]
 var current_index = 0
 var max_index = 0
 
