@@ -5,4 +5,5 @@ My Text Adventure Game, hope through this project can learn more about Godot.(Li
 1.Download Godot Engine:https://godotengine.org/
 <br><br/>
 2.Clone this respo
+<br><br/>
 3.Open the project.godot in your own godot engine 
