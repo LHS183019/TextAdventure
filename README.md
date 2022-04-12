@@ -6,4 +6,4 @@ My Text Adventure Game, hope through this project can learn more about Godot.(Li
 <br><br/>
 2.Clone this repos
 <br><br/>
-3.Open the project.godot in your own godot engine 
+3.Open this project by importing the project.godot in your own godot engine 
