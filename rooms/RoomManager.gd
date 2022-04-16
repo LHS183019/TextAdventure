@@ -4,8 +4,9 @@ const Units = preload("res://global/Units.tres")
 
 onready var mini_map = $BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/Map/MapView/MiniMap
 
+
 func initialize() -> void:
-	
+	# AWARE: The first room on code must be the starting room of current chapter.
 	Units.secret_rooms["developer_soul"] = [["WEST","EAST"],$Unkown]
 	var black_key:Item = load_item("black_key")
 	$Unkown.add_new_item(black_key)

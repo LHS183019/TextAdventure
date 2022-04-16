@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="Level0" type="Position2D"]
+position = Vector2( 500, 500 )
+
+[node name="MiddleRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1100.0
+margin_top = -600.0
+margin_right = 1100.0
+margin_bottom = 600.0
+color = Color( 0.34902, 0.34902, 0.34902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -3,15 +3,14 @@
 [ext_resource path="res://input/Input.gd" type="Script" id=1]
 [ext_resource path="res://plex_mono_28/plex_mono_28.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
-[ext_resource path="res://rooms/Room.tscn" type="PackedScene" id=4]
+[ext_resource path="res://RoomManager/RoomManager1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CommandProcessor.gd" type="Script" id=5]
-[ext_resource path="res://rooms/RoomManager.gd" type="Script" id=6]
+[ext_resource path="res://ExploreMapBtn.gd" type="Script" id=6]
 [ext_resource path="res://Player.gd" type="Script" id=7]
 [ext_resource path="res://GameInfo.tscn" type="PackedScene" id=8]
-[ext_resource path="res://rooms/OutsideRoom.gd" type="Script" id=9]
+[ext_resource path="res://MiniMap/MapContainer.gd" type="Script" id=9]
 [ext_resource path="res://TalkBut.tscn" type="PackedScene" id=10]
 [ext_resource path="res://MiniMap/MiniMap.tscn" type="PackedScene" id=11]
-[ext_resource path="res://MiniMap/Map.gd" type="Script" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0823529, 0.0823529, 0.0823529, 1 )
@@ -22,6 +21,8 @@ bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 [sub_resource type="StyleBoxEmpty" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=7]
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -138,6 +139,16 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 mouse_filter = 2
 
+[node name="ExploreMapBtn" type="Button" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/Top"]
+margin_right = 60.0
+margin_bottom = 50.0
+custom_styles/focus = SubResource( 7 )
+text = "explore"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Map" type="ViewportContainer" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows"]
 margin_top = 54.0
 margin_right = 300.0
@@ -146,7 +157,7 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
-script = ExtResource( 12 )
+script = ExtResource( 9 )
 
 [node name="MapView" type="Viewport" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/Map"]
 size = Vector2( 300, 288 )
@@ -228,69 +239,9 @@ focus_neighbour_right = NodePath("../TalkBut")
 focus_next = NodePath("../../../../../Rows/InputArea/HBoxContainer/Input")
 text = "Drop"
 
-[node name="RoomManager" type="Node" parent="."]
-script = ExtResource( 6 )
-
-[node name="EmptyRoom" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = -591.0
-margin_top = -532.0
-margin_right = -341.0
-margin_bottom = -332.0
-room_name = "白色房間"
-room_id = "white_room"
-room_description = "這是一個白色的房間，有個男人站在你眼前。"
-
-[node name="DeveloperRoom" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = -916.0
-margin_top = -531.0
-margin_right = -666.0
-margin_bottom = -331.0
-room_name = "開發者小屋"
-room_id = "developer_room"
-room_description = "這是所破舊的公寓，開發者的靈魂正在電腦桌前睡覺。"
-
-[node name="TrainingRoom" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = -292.0
-margin_top = -525.0
-margin_right = -42.0
-margin_bottom = -325.0
-room_name = "練習間"
-room_id = "training_room"
-room_description = "這是一個白色的房間，有個木樁立在中間，一位古裝打扮的男人倚在房間的另一邊。"
-
-[node name="Unkown" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = -1198.0
-margin_top = -529.0
-margin_right = -948.0
-margin_bottom = -329.0
-room_name = "未知"
-room_id = "unkown"
-room_description = "一片漆黑，地上有把黑色鑰匙。"
-
-[node name="Outside" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = -589.0
-margin_top = -783.0
-margin_right = -339.0
-margin_bottom = -583.0
-script = ExtResource( 9 )
-room_name = "白色虛空"
-room_id = "white_void"
-room_description = "你走出了白色房間，外面是一望無際的白色虛空......"
-enter_story = [ "背後的門消失了", "一把天上傳來的聲音： “是時候讓你離開了。”", "你眼前一白，陷入了昏迷", "" ]
-enter_story_timer = [ 1, 3, 2, 2 ]
-
-[node name="WoodHouse" parent="RoomManager" instance=ExtResource( 4 )]
-margin_left = 184.0
-margin_top = -781.0
-margin_right = 434.0
-margin_bottom = -581.0
-room_name = "簡陋木屋"
-room_id = "wood_house"
-room_description = "這是一個簡陋的木屋。"
-when_enter = "你進入了簡陋木屋"
-enter_story = [ "你睜開眼，發現自己在一所木屋的床上" ]
-enter_story_timer = [ 3 ]
+[node name="RoomManager" parent="." instance=ExtResource( 4 )]
 
 [connection signal="text_changed" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_changed"]
 [connection signal="text_entered" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="." method="_on_Input_text_entered"]
 [connection signal="text_entered" from="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" to="BackGround/MarginContainer/HBoxContainer/Rows/InputArea/HBoxContainer/Input" method="_on_Input_text_entered"]
+[connection signal="pressed" from="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/Top/ExploreMapBtn" to="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/Top/ExploreMapBtn" method="_on_ExploreMapBtn_pressed"]

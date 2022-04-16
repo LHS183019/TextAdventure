@@ -10,8 +10,8 @@ var current_index = 0
 var max_index = 0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Event.connect("map_exploration_change",self,"_when_swtich_back_from_minimap")
 	grab_focus()
 
 func _gui_input(event: InputEvent) -> void:
@@ -25,6 +25,11 @@ func _gui_input(event: InputEvent) -> void:
 				current_index -= 1
 				text = input_history[current_index]
 				
+
+func _when_swtich_back_from_minimap(is_exploring):
+	if !is_exploring:
+		grab_focus()
+
 
 func _on_Input_text_entered(new_text: String) -> void:
 	if !new_text.empty():

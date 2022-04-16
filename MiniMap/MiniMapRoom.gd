@@ -2,7 +2,7 @@ extends Node2D
 
 var room_name setget _set_room_name
 var room_id setget _set_room_id
-var room_exits = []
+var room_exits = [] # for tracking on the visibility of the connected line
 var room_layer = 0
 
 func _set_room_name(value):

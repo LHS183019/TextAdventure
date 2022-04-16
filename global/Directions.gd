@@ -5,6 +5,7 @@ extends Node
 const DIRECTIONS = ["EAST","WEST","SOUTH","NORTH","UP","DOWN","EASTSOUTH","EASTNORTH","WESTSOUTH","WESTNORTH","INSIDE","OUTSIDE"]
 const MINIMAP_DIRECTIONS = ["EAST","WEST","SOUTH","NORTH","EASTSOUTH","EASTNORTH","WESTSOUTH","WESTNORTH"]
 
+
 static func reverse(direction:String)->String:
 	match(direction):
 		"EAST":

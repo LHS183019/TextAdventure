@@ -61,6 +61,8 @@ Directions="*res://global/Directions.gd"
 DataBase="*res://dataBase/DataBase.gd"
 Event="*res://global/Event.gd"
 Bbcode="*res://global/Bbcode.gd"
+LinePosition="*res://global/LinePosition.gd"
+RoomPosition="*res://global/RoomPosition.gd"
 
 [physics]
 
