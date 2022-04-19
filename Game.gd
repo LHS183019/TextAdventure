@@ -16,8 +16,6 @@ func _ready() -> void:
 	game_info.create_response(player_guide)
 	game_info.create_response(response)
 
-
-
 func _on_Input_text_entered(input_text: String) -> void:
 	if input_text.empty():
 		return

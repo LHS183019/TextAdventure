@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://input/Input.gd" type="Script" id=1]
 [ext_resource path="res://plex_mono_28/plex_mono_28.tres" type="DynamicFont" id=2]
@@ -23,6 +23,15 @@ bg_color = Color( 0.270588, 0.270588, 0.270588, 1 )
 [sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="InputEventKey" id=8]
+control = true
+command = true
+scancode = 77
+physical_scancode = 77
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
 
 [node name="Game" type="Control"]
 anchor_right = 1.0
@@ -143,6 +152,7 @@ mouse_filter = 2
 margin_right = 60.0
 margin_bottom = 50.0
 custom_styles/focus = SubResource( 7 )
+shortcut = SubResource( 9 )
 text = "explore"
 script = ExtResource( 6 )
 __meta__ = {
@@ -177,6 +187,8 @@ columns = 3
 [node name="TalkBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
 margin_right = 97.0
 margin_bottom = 64.0
+hint_tooltip = "talk <somebody>
+與某人對話"
 focus_neighbour_left = NodePath("../DropBut")
 focus_previous = NodePath("../../../../../Rows/InputArea/HBoxContainer/Input")
 text = "Talk"
@@ -185,12 +197,16 @@ text = "Talk"
 margin_left = 101.0
 margin_right = 198.0
 margin_bottom = 64.0
+hint_tooltip = "askq <somebody>
+詢問某人任務"
 text = "AskQ"
 
 [node name="HelpBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
 margin_left = 202.0
 margin_right = 299.0
 margin_bottom = 64.0
+hint_tooltip = "help <command>
+查詢某個指令"
 focus_neighbour_right = NodePath("../LookatBut")
 text = "Help"
 
@@ -198,6 +214,8 @@ text = "Help"
 margin_top = 68.0
 margin_right = 97.0
 margin_bottom = 132.0
+hint_tooltip = "lookat <sb/sth>
+查看某個道具或人物"
 focus_neighbour_left = NodePath("../HelpBut")
 text = "Lookat"
 
@@ -206,6 +224,8 @@ margin_left = 101.0
 margin_top = 68.0
 margin_right = 198.0
 margin_bottom = 132.0
+hint_tooltip = "lookaround
+調出房間描述"
 text = "Lookaround"
 
 [node name="GiveBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
@@ -213,6 +233,8 @@ margin_left = 202.0
 margin_top = 68.0
 margin_right = 299.0
 margin_bottom = 132.0
+hint_tooltip = "give <sth> <sb>
+把背包內的某物品給予某人"
 focus_neighbour_right = NodePath("../TakeBut")
 text = "Give"
 
@@ -220,6 +242,8 @@ text = "Give"
 margin_top = 136.0
 margin_right = 97.0
 margin_bottom = 200.0
+hint_tooltip = "take <sth>
+撿起某道具"
 focus_neighbour_left = NodePath("../GiveBut")
 text = "Take"
 
@@ -228,6 +252,8 @@ margin_left = 101.0
 margin_top = 136.0
 margin_right = 198.0
 margin_bottom = 200.0
+hint_tooltip = "use <sth> <direction>
+使用某個道具,在某方向上(可選)"
 text = "Use"
 
 [node name="DropBut" parent="BackGround/MarginContainer/HBoxContainer/SidePanel/MarginContainer/Rows/ButtonList" instance=ExtResource( 10 )]
@@ -235,6 +261,8 @@ margin_left = 202.0
 margin_top = 136.0
 margin_right = 299.0
 margin_bottom = 200.0
+hint_tooltip = "drop <sth>
+丟掉某道具"
 focus_neighbour_right = NodePath("../TalkBut")
 focus_next = NodePath("../../../../../Rows/InputArea/HBoxContainer/Input")
 text = "Drop"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://MiniMap/MiniMap.gd" type="Script" id=1]
 [ext_resource path="res://MiniMap/MapUI.gd" type="Script" id=2]
@@ -13,8 +13,10 @@
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="InputEventKey" id=4]
-scancode = 16777217
-physical_scancode = 16777217
+control = true
+command = true
+scancode = 77
+physical_scancode = 77
 
 [sub_resource type="ShortCut" id=5]
 shortcut = SubResource( 4 )
@@ -212,6 +214,13 @@ tracks/4/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
+[sub_resource type="InputEventKey" id=8]
+scancode = 67
+physical_scancode = 67
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
 [node name="MiniMap" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -321,6 +330,7 @@ margin_top = 95.0
 margin_right = -1.0
 margin_bottom = 125.0
 custom_styles/focus = SubResource( 7 )
+shortcut = SubResource( 9 )
 text = "current"
 script = ExtResource( 9 )
 __meta__ = {
