@@ -18,6 +18,10 @@ var quest_amount = 0
 var quest_process = 0 setget set_quest_process
 var rng = RandomNumberGenerator.new()
 
+func _init(npc_id):
+	self.npc_id = npc_id
+	self._ready()
+
 func _ready():
 	rng.randomize()
 	

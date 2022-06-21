@@ -11,6 +11,10 @@ var pickable = true
 
 func _to_string() -> String:
 	return Bbcode.wrap_item("%s(%s)" % [item_name,item_id])
+
+func _init(item_id) -> void:
+	self.item_id = item_id
+	self._ready()
 	
 func _ready():
 	if DataBase.items_data.keys().has(item_id):

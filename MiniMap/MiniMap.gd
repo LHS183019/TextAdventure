@@ -22,10 +22,10 @@ func _input(event: InputEvent) -> void:
 	var cur_cam_pos = cur_cam.get_node("../")
 	if event is InputEventMouseButton: # handle the scaling
 		if event.is_pressed() and can_drag:
-			if event.button_index == BUTTON_WHEEL_UP and cur_cam.zoom >= Vector2(0.5*ratio,0.5*ratio): # limit the zoom value not be too close
+			if event.button_index == BUTTON_WHEEL_UP and cur_cam.zoom >= Vector2(0.6*ratio,0.6*ratio): # limit the zoom value not be too close
 				cur_cam.zoom -= Vector2(0.1*ratio,0.1*ratio)
 				map_scale -= 0.1
-			if event.button_index == BUTTON_WHEEL_DOWN and cur_cam.zoom <= Vector2(2*ratio,2*ratio): # limit the zoom value not be too far
+			if event.button_index == BUTTON_WHEEL_DOWN and cur_cam.zoom <= Vector2(1.95*ratio,1.95*ratio): # limit the zoom value not be too far
 				cur_cam.zoom += Vector2(0.1*ratio,0.1*ratio)
 				map_scale += 0.1
 	if event is InputEventMouseMotion: #handle the dragging

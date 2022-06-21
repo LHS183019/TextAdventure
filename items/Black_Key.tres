@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://items/Item.gd" type="Script" id=1]
-
-[resource]
-resource_name = "Black_Key"
-script = ExtResource( 1 )
-item_id = "black_key"
-item_use_value = "white_void"

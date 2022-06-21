@@ -20,7 +20,7 @@ _global_script_classes=[ {
 "path": "res://items/Item.gd"
 }, {
 "base": "Resource",
-"class": "ItemCrustom",
+"class": "ItemCustom",
 "language": "GDScript",
 "path": "res://items/ItemCustom.gd"
 }, {
@@ -42,7 +42,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Exit": "",
 "Item": "",
-"ItemCrustom": "",
+"ItemCustom": "",
 "MetaRoom": "",
 "NPC": "",
 "Unit": ""
@@ -53,6 +53,7 @@ _global_script_class_icons={
 config/name="TextAdventure"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://others/icon.ico"
 
 [autoload]
 

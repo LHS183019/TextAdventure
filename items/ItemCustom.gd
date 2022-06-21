@@ -1,5 +1,5 @@
 extends Resource
-class_name ItemCrustom
+class_name ItemCustom
 
 export(String) var item_name := "item_name"
 export(String) var item_id := "item_id"  # id should always keep in lower case
